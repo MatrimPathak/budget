@@ -1,11 +1,11 @@
 import 'package:budget/firestore.dart';
-import 'package:budget/main.dart';
+// import 'package:budget/main.dart';
 import 'package:budget/pages/pages.dart';
 import 'package:budget/widgets/segmentgraph.dart';
 import 'package:budget/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:telephony/telephony.dart';
+// import 'package:telephony/telephony.dart';
 
 import '../models/transactionmodel.dart';
 
@@ -188,7 +188,7 @@ class _HomePageState extends State<HomePage> {
                                     amount: transaction.amount,
                                     category: transaction.category,
                                     type: transaction.type,
-                                    date: transaction.date,
+                                    // date: transaction.date,
                                     notes: transaction.notes,
                                     timestamp: transaction.timestamp,
                                   );

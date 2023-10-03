@@ -48,7 +48,7 @@ class _AddPageState extends State<AddPage> {
           amount: amount,
           type: type,
           category: category,
-          date: "date",
+          // date: "date",
           notes: notes,
           timestamp: Timestamp.fromDate(dateTime),
         ),

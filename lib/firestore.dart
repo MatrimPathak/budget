@@ -12,7 +12,7 @@ class Firestore {
       amount: transaction.amount,
       category: transaction.category,
       type: transaction.type,
-      date: transaction.date,
+      // date: transaction.date,
       notes: transaction.notes,
       timestamp: transaction.timestamp,
     ).toJson();
@@ -33,7 +33,7 @@ class Firestore {
       amount: transaction.amount,
       category: transaction.category,
       type: transaction.type,
-      date: transaction.date,
+      // date: transaction.date,
       notes: transaction.notes,
       timestamp: transaction.timestamp
     ).toJson();

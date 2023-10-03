@@ -6,7 +6,7 @@ class TransactionModel {
   final String amount;
   final String category;
   final String type;
-  final String date;
+  // final String date;
   final String notes;
   final Timestamp timestamp;
 
@@ -16,7 +16,7 @@ class TransactionModel {
     required this.amount,
     required this.category,
     required this.type,
-    required this.date,
+    // required this.date,
     required this.notes,
     required this.timestamp,
   });
@@ -28,7 +28,7 @@ class TransactionModel {
       "amount": amount,
       "category": category,
       "type": type,
-      "date": date,
+      // "date": date,
       "notes": notes,
       "timestamp": timestamp
     };
@@ -43,7 +43,7 @@ class TransactionModel {
       amount: snapshot['amount'],
       type: snapshot['type'],
       category: snapshot['category'],
-      date: snapshot['date'],
+      // date: snapshot['date'],
       notes: snapshot['notes'],
       timestamp: snapshot['timestamp'],
     );

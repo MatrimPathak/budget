@@ -1,7 +1,7 @@
 import 'package:budget/firestore.dart';
 import 'package:budget/widgets/widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
@@ -12,7 +12,7 @@ class TransactionTile extends StatefulWidget {
   final String amount;
   final String category;
   final String type;
-  final String date;
+  // final String date;
   final String notes;
   final Timestamp timestamp;
 
@@ -23,7 +23,7 @@ class TransactionTile extends StatefulWidget {
     required this.amount,
     required this.category,
     required this.type,
-    required this.date,
+    // required this.date,
     required this.notes,
     required this.timestamp,
   });
