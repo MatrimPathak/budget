@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1088044107445",
+    "project_id": "expenses-tracker-4597",
+    "storage_bucket": "expenses-tracker-4597.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1088044107445:android:83caa1c8142f01dd96a0fc",
+        "android_client_info": {
+          "package_name": "com.matrimpathak.budget"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRxkHnJLP-_syYCaMSsmFDkNkE9ig-mGM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
