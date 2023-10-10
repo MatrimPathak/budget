@@ -15,6 +15,13 @@ class AddPage extends StatefulWidget {
 }
 
 class _AddPageState extends State<AddPage> {
+  String parseAmount(double amount) {
+    return NumberFormat.decimalPatternDigits(
+      locale: "en_IN",
+      decimalDigits: 2,
+    ).format(amount);
+  }
+
   String type = "Expense";
   String category = "Food";
   DateTime dateTime = DateTime.now();
@@ -83,7 +90,7 @@ class _AddPageState extends State<AddPage> {
           children: [
             Container(
               width: double.infinity,
-              padding: const EdgeInsets.all(50),
+              padding: const EdgeInsets.all(30),
               decoration: BoxDecoration(
                 color: type == "Expense"
                     ? Colors.red.shade200
@@ -198,14 +205,14 @@ class _AddPageState extends State<AddPage> {
                       FormTextField(
                         label: "Title",
                         controller: titleController,
-                        textInputType: TextInputType.name,
+                        textInputType: "name",
                       ),
                       const SizedBox(height: 10),
                       const FormLabel(label: "AMOUNT"),
                       FormTextField(
                         label: "Amount",
                         controller: amountController,
-                        textInputType: TextInputType.number,
+                        textInputType: "number",
                       ),
                       const SizedBox(height: 10),
                       const FormLabel(label: "DATE"),
@@ -284,7 +291,7 @@ class _AddPageState extends State<AddPage> {
                       FormTextField(
                         label: "Notes",
                         controller: notesController,
-                        textInputType: TextInputType.multiline,
+                        textInputType: "multiline",
                       ),
                     ],
                   ),

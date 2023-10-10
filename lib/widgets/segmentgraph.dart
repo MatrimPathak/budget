@@ -21,7 +21,7 @@ class SegmentGraph extends StatelessWidget {
       children: [
         Container(
           height: 10,
-          margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+          margin: const EdgeInsets.fromLTRB(20, 10, 20, 0),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: Row(
@@ -148,7 +148,7 @@ class SegmentGraph extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 10),
-                    const Text("Perosonal"),
+                    const Text("Personal"),
                   ],
                 ),
               ],

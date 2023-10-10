@@ -185,7 +185,7 @@ class _CategoryPageState extends State<CategoryPage> {
                   FormTextField(
                     label: "Name",
                     controller: nameController,
-                    textInputType: TextInputType.name,
+                    textInputType: "name",
                   ),
                 ],
               ),

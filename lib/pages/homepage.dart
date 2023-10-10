@@ -98,9 +98,9 @@ class _HomePageState extends State<HomePage> {
                   double totalPersonal = 0;
                   final transactionData = snapshot.data;
                   if (transactionData!.isEmpty) {
-                    return Expanded(
+                    return const Expanded(
                       child: Column(
-                        children: const [
+                        children: [
                           TopCard(
                             balance: "0.00",
                             totalExpense: "0.00",
@@ -174,9 +174,10 @@ class _HomePageState extends State<HomePage> {
                                   40)
                               .ceil(),
                         ),
+                        SizedBox(height: 10),
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsets.all(20),
+                            padding: const EdgeInsets.fromLTRB(20,0,20,10),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(10),
                               child: ListView.separated(

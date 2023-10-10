@@ -214,8 +214,7 @@ class _TransactionTileState extends State<TransactionTile> {
                           ),
                         ),
                         Text(
-                          DateFormat(
-                                  'MMM dd, yyyy ${isExpanded ? '\nhh:hh a' : ''}')
+                          DateFormat('MMM dd, yyyy')
                               .format(widget.timestamp.toDate()),
                           textAlign: TextAlign.end,
                           style: TextStyle(
@@ -236,7 +235,16 @@ class _TransactionTileState extends State<TransactionTile> {
                     ? Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text("Notes:"),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text("Notes:"),
+                              Text(
+                                DateFormat('hh:hh a')
+                                    .format(widget.timestamp.toDate()),
+                              ),
+                            ],
+                          ),
                           Container(
                             width: double.infinity,
                             padding: const EdgeInsets.all(10),
