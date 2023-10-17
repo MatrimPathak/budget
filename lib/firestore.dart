@@ -24,19 +24,38 @@ class Firestore {
     }
   }
 
+  static Future updateTransaction(
+      TransactionModel transaction, String id) async {
+    final db = FirebaseFirestore.instance.collection("Transactions").doc(id);
+
+    final newTransaction = TransactionModel(
+            name: transaction.name,
+            amount: transaction.amount,
+            category: transaction.category,
+            type: transaction.type,
+            notes: transaction.notes,
+            timestamp: transaction.timestamp)
+        .toJson();
+
+    try {
+      await db.update(newTransaction);
+    } catch (e) {
+      print(e);
+    }
+  }
+
   static Future createDummyTransaction(TransactionModel transaction) async {
     final db = FirebaseFirestore.instance.collection("Dummy Transactions");
 
     final newTransaction = TransactionModel(
-      id: transaction.id,
-      name: transaction.name,
-      amount: transaction.amount,
-      category: transaction.category,
-      type: transaction.type,
-      // date: transaction.date,
-      notes: transaction.notes,
-      timestamp: transaction.timestamp
-    ).toJson();
+            id: transaction.id,
+            name: transaction.name,
+            amount: transaction.amount,
+            category: transaction.category,
+            type: transaction.type,
+            notes: transaction.notes,
+            timestamp: transaction.timestamp)
+        .toJson();
 
     try {
       await db.add(newTransaction);

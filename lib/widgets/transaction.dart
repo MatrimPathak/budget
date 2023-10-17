@@ -1,4 +1,5 @@
 import 'package:budget/firestore.dart';
+import 'package:budget/pages/pages.dart';
 import 'package:budget/widgets/widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:firebase_core/firebase_core.dart';
@@ -12,7 +13,6 @@ class TransactionTile extends StatefulWidget {
   final String amount;
   final String category;
   final String type;
-  // final String date;
   final String notes;
   final Timestamp timestamp;
 
@@ -23,7 +23,6 @@ class TransactionTile extends StatefulWidget {
     required this.amount,
     required this.category,
     required this.type,
-    // required this.date,
     required this.notes,
     required this.timestamp,
   });
@@ -77,6 +76,7 @@ class _TransactionTileState extends State<TransactionTile> {
       return Icons.warning;
     }
 
+    print(widget.id);
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: Slidable(
@@ -85,8 +85,21 @@ class _TransactionTileState extends State<TransactionTile> {
           extentRatio: 0.3,
           children: [
             SlidableAction(
-              // onPressed: (context) => Firestore.removeTransaction(widget.id),
-              onPressed: (context) => {},
+              onPressed: (context) => {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => UpdatePage(
+                        id: widget.id,
+                        name: widget.name,
+                        amount: widget.amount,
+                        category: widget.category,
+                        type: widget.type,
+                        notes: widget.notes,
+                        timestamp: widget.timestamp,
+                      ),
+                    ))
+              },
               backgroundColor: Colors.blue,
               foregroundColor: Colors.white,
               borderRadius: BorderRadius.circular(10),

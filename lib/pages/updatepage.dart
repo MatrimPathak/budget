@@ -7,14 +7,30 @@ import 'package:intl/intl.dart';
 import '../models/transactionmodel.dart';
 import '../widgets/widgets.dart';
 
-class AddPage extends StatefulWidget {
-  const AddPage({super.key});
+class UpdatePage extends StatefulWidget {
+  final String id;
+  final String name;
+  final String amount;
+  final String category;
+  final String type;
+  final String notes;
+  final Timestamp timestamp;
+  const UpdatePage({
+    super.key,
+    required this.id,
+    required this.name,
+    required this.amount,
+    required this.category,
+    required this.type,
+    required this.notes,
+    required this.timestamp,
+  });
 
   @override
-  State<AddPage> createState() => _AddPageState();
+  State<UpdatePage> createState() => _UpdatePageState();
 }
 
-class _AddPageState extends State<AddPage> {
+class _UpdatePageState extends State<UpdatePage> {
   String parseAmount(double amount) {
     return NumberFormat.decimalPatternDigits(
       locale: "en_IN",
@@ -25,6 +41,14 @@ class _AddPageState extends State<AddPage> {
   String type = "Expense";
   String category = "Food";
   DateTime dateTime = DateTime.now();
+
+  @override
+  void initState() {
+    super.initState();
+    type = widget.type;
+    category = widget.category;
+    dateTime = widget.timestamp.toDate();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +63,9 @@ class _AddPageState extends State<AddPage> {
       return Icons.warning;
     }
 
+    print(DateFormat('dd/MM/yyyy').format(widget.timestamp.toDate()));
+    print(DateFormat('hh:hh a').format(widget.timestamp.toDate()));
+
     Future<void> addTransaction(
       String name,
       String amount,
@@ -49,16 +76,16 @@ class _AddPageState extends State<AddPage> {
       if (amount == "") return;
       if (notes == "") return;
 
-      Firestore.createTransaction(
+      Firestore.updateTransaction(
         TransactionModel(
           name: name,
           amount: amount,
           type: type,
           category: category,
-          // date: "date",
           notes: notes,
           timestamp: Timestamp.fromDate(dateTime),
         ),
+        widget.id,
       ).then((value) {
         Navigator.pop(context);
       });
@@ -205,14 +232,14 @@ class _AddPageState extends State<AddPage> {
                       const SizedBox(height: 10),
                       const FormLabel(label: "TITLE"),
                       FormTextField(
-                        label: "Title",
+                        label: widget.name,
                         controller: titleController,
                         textInputType: "name",
                       ),
                       const SizedBox(height: 10),
                       const FormLabel(label: "AMOUNT"),
                       FormTextField(
-                        label: "Amount",
+                        label: widget.amount,
                         controller: amountController,
                         textInputType: "number",
                       ),
@@ -277,7 +304,7 @@ class _AddPageState extends State<AddPage> {
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 child: Text(
-                                  DateFormat('hh:mm a').format(dateTime),
+                                  DateFormat('hh:hh a').format(dateTime),
                                   textAlign: TextAlign.center,
                                   style: const TextStyle(
                                     fontSize: 18,
@@ -291,7 +318,7 @@ class _AddPageState extends State<AddPage> {
                       const SizedBox(height: 10),
                       const FormLabel(label: "NOTES"),
                       FormTextField(
-                        label: "Notes",
+                        label: widget.notes,
                         controller: notesController,
                         textInputType: "multiline",
                       ),
@@ -302,12 +329,18 @@ class _AddPageState extends State<AddPage> {
             ),
             const SizedBox(height: 10),
             AddButton(
-              text: "Add Transaction",
+              text: "Update Transaction",
               onTap: () {
                 addTransaction(
-                  titleController.text.trim(),
-                  amountController.text.trim(),
-                  notesController.text.trim(),
+                  titleController.text.trim() != ""
+                      ? titleController.text.trim()
+                      : widget.name,
+                  amountController.text.trim() != ""
+                      ? amountController.text.trim()
+                      : widget.amount,
+                  notesController.text.trim() != ""
+                      ? notesController.text.trim()
+                      : widget.notes,
                   dateTime,
                 );
                 FocusManager.instance.primaryFocus?.unfocus();
