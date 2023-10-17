@@ -204,20 +204,6 @@ class _AddPageState extends State<AddPage> {
                         ),
                       ),
                       const SizedBox(height: 10),
-                      const FormLabel(label: "TITLE"),
-                      FormTextField(
-                        label: "Title",
-                        controller: titleController,
-                        textInputType: "name",
-                      ),
-                      const SizedBox(height: 10),
-                      const FormLabel(label: "AMOUNT"),
-                      FormTextField(
-                        label: "Amount",
-                        controller: amountController,
-                        textInputType: "number",
-                      ),
-                      const SizedBox(height: 10),
                       const FormLabel(label: "DATE"),
                       Row(
                         children: [
@@ -288,6 +274,20 @@ class _AddPageState extends State<AddPage> {
                             ),
                           ),
                         ],
+                      ),
+                      const SizedBox(height: 10),
+                      const FormLabel(label: "TITLE"),
+                      FormTextField(
+                        label: "Title",
+                        controller: titleController,
+                        textInputType: "name",
+                      ),
+                      const SizedBox(height: 10),
+                      const FormLabel(label: "AMOUNT"),
+                      FormTextField(
+                        label: "Amount",
+                        controller: amountController,
+                        textInputType: "number",
                       ),
                       const SizedBox(height: 10),
                       const FormLabel(label: "NOTES"),

@@ -106,7 +106,7 @@ class _UpdatePageState extends State<UpdatePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "ADD NEW TRANSACTION",
+          "UPDATE TRANSACTION",
         ),
         centerTitle: true,
         elevation: 0,
@@ -230,20 +230,6 @@ class _UpdatePageState extends State<UpdatePage> {
                         ),
                       ),
                       const SizedBox(height: 10),
-                      const FormLabel(label: "TITLE"),
-                      FormTextField(
-                        label: widget.name,
-                        controller: titleController,
-                        textInputType: "name",
-                      ),
-                      const SizedBox(height: 10),
-                      const FormLabel(label: "AMOUNT"),
-                      FormTextField(
-                        label: widget.amount,
-                        controller: amountController,
-                        textInputType: "number",
-                      ),
-                      const SizedBox(height: 10),
                       const FormLabel(label: "DATE"),
                       Row(
                         children: [
@@ -316,9 +302,26 @@ class _UpdatePageState extends State<UpdatePage> {
                         ],
                       ),
                       const SizedBox(height: 10),
+                      const FormLabel(label: "TITLE"),
+                      FormTextField(
+                        label: "Title",
+                        text: widget.name,
+                        controller: titleController,
+                        textInputType: "name",
+                      ),
+                      const SizedBox(height: 10),
+                      const FormLabel(label: "AMOUNT"),
+                      FormTextField(
+                        label: "Amount",
+                        text: widget.amount,
+                        controller: amountController,
+                        textInputType: "number",
+                      ),
+                      const SizedBox(height: 10),
                       const FormLabel(label: "NOTES"),
                       FormTextField(
-                        label: widget.notes,
+                        label: "Notes",
+                        text: widget.notes,
                         controller: notesController,
                         textInputType: "multiline",
                       ),

@@ -112,6 +112,8 @@ class _HomePageState extends State<HomePage> {
                   );
                 }
                 if (snapshot.hasData) {
+                  totalExpense = 0;
+                  totalIncome = 0;
                   double totalFood = 0;
                   double totalTravel = 0;
                   double totalGroceries = 0;

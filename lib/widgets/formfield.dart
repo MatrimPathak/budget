@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 
 class FormTextField extends StatefulWidget {
   final String label;
+  final String text;
   final String textInputType;
   final TextEditingController controller;
 
   const FormTextField({
     super.key,
+    this.text = "",
     required this.label,
     required this.textInputType,
     required this.controller,
@@ -19,6 +21,7 @@ class FormTextField extends StatefulWidget {
 class _FormTextFieldState extends State<FormTextField> {
   @override
   Widget build(BuildContext context) {
+    widget.controller.text = widget.text;
     return SizedBox(
       width: double.infinity,
       child: TextField(
