@@ -62,8 +62,31 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    double totalExpense = 0;
+    double totalIncome = 0;
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SettingsPage(
+                          balance: parseAmount(totalIncome - totalExpense),
+                          totalExpense: parseAmount(totalExpense),
+                          totalSaving: parseAmount(totalIncome)),
+                    ));
+              },
+              child: const CircleAvatar(
+                backgroundImage: NetworkImage(
+                    "https://lh3.googleusercontent.com/pw/ADCreHe8oEOTBw-mMSesqMf4csTFZDE4NaJRTj3nMvWghoqhVKcB8zjDf7DS7h5wYzMvufG0JEFfqgymmFaJHxYp_w6FRyUdZ06s6oew0LRBcEIbyk11RwS3djRn4Oa32ys_jKoUuKU_yeBZbSKMSOxHX81BIhgbY_6uUbQDQewX6brqJz-i_r7R2lj9B5mv2ljdXdxoDWOh1_-rOqCpAh2SMf1d-nL_KdS-FS-wW8aVhDfR9j97bG6MXG-kyzknUr1jrn63UuMhdWxQeOfY7c-lXAR6zlvnWlEwIHtBRrQ2Du_j0_C6oGRNBROSo2Z1JSC3360Pj9U9EhiHG5z5r7JSxoU_FIvxxac-5uJpeY7LGdTv0vmDT-59nACXN04W3qLktjUg3LvGxZA5R-7_77U1w_p0vXf2XQ4ESsjjmvVJW0Bci60kiJlKyPybgNkESxmdtfvXc_KnjnaSHXS51cxr7ZHsdIOK798-gNiJKWyPqwqM6Jieoq5ajIWk_7bSm8RdBA9wlAHQMMvHM_NxNvPMYg8vTLs8kj4cWagXi5ZIKdPQnAkULRsA3tRbETbAR_KZn8QiecfnWFme-JYjp-6WOvIsF-namJnztf5FECF1nxYAGzrsKciUX__XTbkPyKDyMW7DYJgbteC5C4a7WAdFh8otZFh0X9zTZmVdIJHjFUO3EcLyhIQaLaqL-Qvi66f0dcDU5DLyGyM3feS0NJEnX5gRzcOtTfl9EPn_cqQm2Np22G-0E4w9q57n5MNrc7f5-fazuO4lhKrACus_qvPWy0owxBjveA7HZL2KOXAp1tAED9VrwHUh1Qz41XioMeRo5D6xzIipWennSXQZypb2uLbsVZiRm3gJaaMfiXlLu3HR1U64knT-AkXpzUy7AV5nbgZVYiq7SyxbCHFeR8jcBQA=w1365-h910-s-no?authuser=0"),
+              ),
+            ),
+          )
+        ],
         title: const Text("Expenses"),
         centerTitle: true,
         elevation: 0,
@@ -89,8 +112,6 @@ class _HomePageState extends State<HomePage> {
                   );
                 }
                 if (snapshot.hasData) {
-                  double totalExpense = 0;
-                  double totalIncome = 0;
                   double totalFood = 0;
                   double totalTravel = 0;
                   double totalGroceries = 0;
@@ -174,10 +195,10 @@ class _HomePageState extends State<HomePage> {
                                   40)
                               .ceil(),
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsets.fromLTRB(20,0,20,10),
+                            padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(10),
                               child: ListView.separated(

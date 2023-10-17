@@ -36,6 +36,7 @@ class _AddPageState extends State<AddPage> {
       if (category == "Shopping") return Icons.shopping_cart;
       if (category == "Travel") return Icons.bike_scooter;
       if (category == "Recharge") return Icons.five_g;
+      if (category == "Subscriptions") return Icons.subscriptions;
       return Icons.warning;
     }
 
